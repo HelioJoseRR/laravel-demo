@@ -203,22 +203,6 @@ body {
     gap: 1.2rem;
 }
 
-@media (max-width: 800px) {
-    .events-container, .event-view-container, .event-create-container {
-        padding: 1rem 0.3rem;
-    }
-    .event-list {
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-    .event-card {
-        padding: 0.8rem 0.7rem;
-    }
-    .event-create-form {
-        padding: 1rem 0.5rem;
-    }
-}
-
 /* Forum */
 .section-forum .forum-list {
     display: flex;
@@ -373,7 +357,7 @@ body {
     margin-bottom: 0.3rem;
 }
 .forum-post-meta {
-    color: var (--text-muted);
+    color: var(--text-muted);
     font-size: 0.97rem;
 }
 .forum-reply-form {
@@ -422,13 +406,15 @@ body {
     box-shadow: var(--card-shadow);
     margin-bottom: 2rem;
 }
-.reviews-list, .friends-list {
+.reviews-list,
+.friends-list {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: flex-start;
 }
-.review-card, .friend-card {
+.review-card,
+.friend-card {
     background: #23293a;
     border-radius: 12px;
     padding: 1.3rem 1.7rem;
@@ -438,7 +424,8 @@ body {
     transition: transform 0.18s, box-shadow 0.18s;
     margin-bottom: 0.5rem;
 }
-.review-card:hover, .friend-card:hover {
+.review-card:hover,
+.friend-card:hover {
     transform: translateY(-6px) scale(1.04);
     box-shadow: var(--card-shadow-hover);
 }
@@ -466,6 +453,7 @@ body {
     color: var(--text-muted);
     font-size: 0.97rem;
 }
+
 .btn {
     background: var(--primary);
     color: #fff;
@@ -519,7 +507,8 @@ body {
     overflow: hidden;
     box-shadow: var(--card-shadow);
 }
-.albums-table th, .albums-table td {
+.albums-table th,
+.albums-table td {
     padding: 1rem 1.2rem;
     text-align: left;
     color: var(--text-light);
@@ -538,7 +527,8 @@ body {
 }
 
 /* Pagination, view-all, etc */
-.view-all-button, .forum-pagination {
+.view-all-button,
+.forum-pagination {
     color: var(--primary);
     text-decoration: none;
     font-weight: 500;
@@ -547,24 +537,47 @@ body {
     font-size: 1.05rem;
 }
 
-/* HEADER MODERNIZAÇÃO */
+/* HEADER MODERNIZAÇÃO - CORRIGIDO */
 .header-main {
     background: var(--header-bg);
     box-shadow: 0 2px 8px #0004;
-    padding: 0.7rem 0;
+    padding: 0.8rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
 }
+
 .header-container {
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
     position: relative;
+    gap: 2rem; /* Adiciona espaçamento entre os elementos */
 }
+
+/* HEADER ACTIONS - Melhor distribuição */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: auto; /* Força os elementos para a direita */
+}
+
+/* SEARCH FORM - Remove margin conflitante */
+.search-form {
+    display: flex;
+    align-items: center;
+    background: #f5f7fa;
+    border-radius: 7px;
+    padding: 0.3rem 0.7rem;
+    box-shadow: 0 1px 4px #0001;
+    /* Remove margin-right que estava causando problemas */
+}
+
+/* LOGO - Sempre à esquerda */
 .logo {
     font-size: 2.1rem;
     color: var(--primary);
@@ -575,23 +588,29 @@ body {
     gap: 0.6rem;
     letter-spacing: 1.5px;
     transition: color 0.2s;
+    flex-shrink: 0; /* Impede que a logo encolha */
 }
+
 .logo-icon {
     font-size: 2.2rem;
     color: var(--primary);
     margin-right: 0.2rem;
 }
+
 .logo-text {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--primary);
-    /* Remove text-shadow for a flat look */
     text-shadow: none;
 }
-.logo:hover, .logo:focus {
+
+.logo:hover,
+.logo:focus {
     color: #fff;
 }
+
+/* MOBILE TOGGLE */
 .header-mobile-toggle {
     display: none;
     background: none;
@@ -599,89 +618,78 @@ body {
     color: var(--primary);
     font-size: 2rem;
     cursor: pointer;
-    margin-left: 1.5rem;
     transition: color 0.2s;
+    order: 3; /* Coloca o toggle no final */
 }
+
 .header-mobile-toggle:hover {
     color: var(--primary-dark);
 }
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 2.2rem;
-}
-.search-form {
-    display: flex;
-    align-items: center;
-    background: #f5f7fa; /* Fundo mais claro */
-    border-radius: 7px;
-    padding: 0.3rem 0.7rem;
-    box-shadow: 0 1px 4px #0001;
-}
-.search-form input[type="search"] {
-    border: none;
-    background: transparent;
-    color: #23272f;
-    padding: 0.5rem 0.7rem;
-    font-size: 1rem;
-    outline: none;
-    width: 170px;
-}
-.search-form button {
-    background: none;
-    border: none;
-    color: var(--primary);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0 0.5rem;
-    transition: color 0.2s;
-}
-.search-form button:hover {
-    color: var(--primary-dark);
-}
+
+/* NAVIGATION */
 .main-nav {
-    margin-left: 1.2rem;
+    flex-shrink: 0;
 }
+
 .nav-list {
     display: flex;
     align-items: center;
-    gap: 1.3rem;
+    gap: 1rem;
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 .nav-list li {
     position: relative;
 }
-.nav-list a, .nav-list span {
+
+.nav-list a,
+.nav-list span {
     color: var(--text-light);
     text-decoration: none;
-    font-size: 1.05rem;
-    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 5px;
     transition: background 0.18s, color 0.18s;
-    white-space: nowrap; /* Impede quebra de linha em links do menu */
+    white-space: nowrap;
+    display: block;
 }
-.nav-list a:hover, .nav-list .active {
+
+.nav-list a:hover,
+.nav-list .active {
     background: var(--primary);
     color: #fff;
     box-shadow: 0 2px 8px #0002;
 }
+
+/* WELCOME MESSAGE - Mais discreto */
+.nav-list span {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+}
+
+/* LOGOUT FORM - Botão mais discreto */
 .logout-form {
     display: inline;
 }
+
 .logout-form button {
-    background: #c0392b;
-    color: #fff;
+    background: #3a4252; /* Cor mais neutra */
+    color: var(--text-light);
     border: none;
     border-radius: 5px;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.18s;
+    font-size: 0.95rem;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
 }
+
 .logout-form button:hover {
-    background: #e74c3c;
+    background: #4a5670;
+    color: #fff;
 }
 
 /* FOOTER MODERNIZAÇÃO - HORIZONTAL */
@@ -720,87 +728,6 @@ body {
     flex-direction: row;
     gap: 2rem;
     margin-top: 0;
-}
-@media (max-width: 700px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1.2rem;
-    }
-    .footer-brand {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.3rem;
-    }
-    .footer-links {
-        flex-direction: column;
-        gap: 0.7rem;
-        margin-top: 1.2rem;
-    }
-}
-
-@media (max-width: 900px) {
-    .header-container, .footer-container {
-        padding: 0 1rem;
-    }
-}
-@media (max-width: 700px) {
-    .header-container, .footer-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.2rem;
-    }
-    .footer-container {
-        align-items: center;
-        text-align: center;
-    }
-    .footer-brand {
-        align-items: center;
-    }
-    .footer-links {
-        flex-direction: column;
-        gap: 0.7rem;
-        margin-top: 1.2rem;
-    }
-}
-@media (max-width: 600px) {
-    .header-mobile-toggle {
-        display: block;
-    }
-    .main-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: var(--header-bg);
-        box-shadow: 0 4px 16px #0007;
-        border-radius: 0 0 12px 12px;
-        min-width: 180px;
-        z-index: 200;
-    }
-    .main-nav.active {
-        display: block;
-    }
-    .nav-list {
-        flex-direction: column;
-        gap: 0.2rem;
-        padding: 0.7rem 0;
-    }
-    .nav-list li {
-        width: 100%;
-    }
-    .nav-list a, .nav-list span {
-        display: block;
-        width: 100%;
-        padding: 0.7rem 1.2rem;
-    }
-    .header-actions {
-        flex-direction: row;
-        gap: 1rem;
-        width: 100%;
-        justify-content: flex-end;
-    }
 }
 
 .footer-main {
@@ -1038,14 +965,16 @@ body {
     text-align: center;
 }
 
-.song-create-container, .song-edit-container {
+.song-create-container,
+.song-edit-container {
     background: var(--bg-card);
     border-radius: 16px;
     box-shadow: var(--card-shadow);
     padding: 2.5rem 2rem;
     margin-bottom: 2rem;
 }
-.song-create-form, .song-edit-form {
+.song-create-form,
+.song-edit-form {
     background: #23293a;
     border-radius: 12px;
     box-shadow: 0 2px 8px #0003;
@@ -1054,76 +983,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-}
-
-@media (max-width: 800px) {
-    .main-content {
-        padding: 1rem 0.3rem;
-    }
-    .highlight-list, .event-list, .reviews-list, .friends-list {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.2rem;
-    }
-    .albums-table th, .albums-table td {
-        padding: 0.6rem 0.5rem;
-    }
-    .header-container, .footer-container {
-        padding: 0 0.5rem;
-    }
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.2rem;
-    }
-    .header-actions {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.2rem;
-        width: 100%;
-    }
-    .main-nav {
-        width: 100%;
-    }
-    .nav-list {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    .forum-container, .forum-topic-view {
-        padding: 1rem 0.3rem;
-    }
-    .forum-new-topic-form, .forum-reply-form {
-        padding: 1rem 0.5rem;
-    }
-    .forum-topic-item, .forum-post-card {
-        padding: 0.8rem 0.7rem;
-    }
-    .playlists-container, .playlist-view-container, .playlist-create-container {
-        padding: 1rem 0.3rem;
-    }
-    .playlist-list {
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-    .playlist-card, .playlist-song-item {
-        padding: 0.8rem 0.7rem;
-    }
-    .playlist-create-form, .playlist-add-song-form {
-        padding: 1rem 0.5rem;
-    }
-    .songs-container, .song-create-container, .song-edit-container {
-        padding: 1rem 0.3rem;
-    }
-    .song-list {
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-    .song-card {
-        padding: 0.8rem 0.7rem;
-    }
-    .song-create-form, .song-edit-form {
-        padding: 1rem 0.5rem;
-    }
 }
 
 /* Corrige paginação do Laravel para não afetar SVGs ou setas */
@@ -1138,7 +997,8 @@ body {
 .pagination li {
     display: inline-block;
 }
-.pagination a, .pagination span {
+.pagination a,
+.pagination span {
     display: inline-block;
     padding: 0.4rem 0.9rem;
     color: var(--primary);
@@ -1243,7 +1103,8 @@ body {
     text-decoration: none;
     transition: color 0.18s;
 }
-.search-link:hover, .search-link:focus {
+.search-link:hover,
+.search-link:focus {
     color: var(--primary-dark);
     text-decoration: underline;
 }
@@ -1293,15 +1154,6 @@ body {
 .search-review-text {
     color: var(--text-light);
     margin-bottom: 0.2rem;
-}
-@media (max-width: 800px) {
-    .search-results-container {
-        padding: 1rem 0.3rem;
-    }
-    .search-album-list {
-        flex-direction: column;
-        gap: 1rem;
-    }
 }
 
 /* REVIEWS - LISTAGEM E FORMULÁRIO */
@@ -1388,20 +1240,6 @@ body {
     flex-direction: column;
     gap: 1.2rem;
 }
-@media (max-width: 800px) {
-    .reviews-container, .review-create-container {
-        padding: 1rem 0.3rem;
-    }
-    .reviews-list {
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-    .review-card {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem 0.7rem;
-    }
-}
 
 /* HOME HERO SECTION */
 .home-hero {
@@ -1426,7 +1264,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    /* text-fill-color: transparent; removido por não ser suportado */
 }
 .home-hero-subtitle {
     color: var(--text-muted);
@@ -1441,89 +1278,14 @@ body {
     margin-top: 0.5rem;
     box-shadow: 0 2px 8px #0002;
 }
-@media (max-width: 700px) {
-    .home-hero {
-        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-        min-height: 120px;
-    }
-    .home-hero-content {
-        max-width: 100%;
-    }
-}
 
 /* HOME - REVIEWS SECTION */
 .section-reviews {
     margin-top: 2.5rem;
 }
-.reviews-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: flex-start;
-}
-.review-card {
-    background: #23283a;
-    border-radius: 12px;
-    padding: 1.3rem 1.7rem;
-    min-width: 260px;
-    max-width: 340px;
-    box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 1.2rem;
-    transition: transform 0.18s, box-shadow 0.18s;
-    margin-bottom: 0.5rem;
-}
-.review-card:hover {
-    transform: translateY(-6px) scale(1.04);
-    box-shadow: var(--card-shadow-hover);
-}
-.review-album-cover {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    object-fit: cover;
-    background: #181c22;
-}
-.review-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-.review-album-title {
-    color: var(--primary);
-    font-weight: 600;
-}
-.star-rating {
-    color: gold;
-    font-size: 1.2em;
-    margin-left: 0.5rem;
-}
-.review-text {
-    color: var(--text-light);
-    font-style: italic;
-    margin: 0.2rem 0 0.5rem 0;
-}
-.review-date {
-    color: var(--text-muted);
-    font-size: 0.97rem;
-}
 .view-all-reviews {
     margin-top: 1.5rem;
     text-align: right;
-}
-@media (max-width: 800px) {
-    .reviews-list {
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-    .review-card {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem 0.7rem;
-    }
 }
 
 /* AUTH PAGES (login/register) */
@@ -1612,7 +1374,243 @@ body {
 .auth-links a:hover {
     color: var(--primary-dark);
 }
+
+/* RESPONSIVIDADE GERAL */
+@media (max-width: 900px) {
+    .header-container {
+        padding: 0 1.5rem;
+    }
+
+    .search-form input[type="search"] {
+        width: 140px;
+    }
+
+    .nav-list {
+        gap: 0.5rem;
+    }
+
+    .nav-list a,
+    .nav-list span {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .main-content {
+        padding: 1rem 0.3rem;
+    }
+    .highlight-list,
+    .event-list,
+    .reviews-list,
+    .friends-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .albums-table th,
+    .albums-table td {
+        padding: 0.6rem 0.5rem;
+    }
+    .events-container,
+    .event-view-container,
+    .event-create-container {
+        padding: 1rem 0.3rem;
+    }
+    .event-list {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .event-card {
+        padding: 0.8rem 0.7rem;
+    }
+    .event-create-form {
+        padding: 1rem 0.5rem;
+    }
+    .forum-container,
+    .forum-topic-view {
+        padding: 1rem 0.3rem;
+    }
+    .forum-new-topic-form,
+    .forum-reply-form {
+        padding: 1rem 0.5rem;
+    }
+    .forum-topic-item,
+    .forum-post-card {
+        padding: 0.8rem 0.7rem;
+    }
+    .playlists-container,
+    .playlist-view-container,
+    .playlist-create-container {
+        padding: 1rem 0.3rem;
+    }
+    .playlist-list {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .playlist-card,
+    .playlist-song-item {
+        padding: 0.8rem 0.7rem;
+    }
+    .playlist-create-form,
+    .playlist-add-song-form {
+        padding: 1rem 0.5rem;
+    }
+    .songs-container,
+    .song-create-container,
+    .song-edit-container {
+        padding: 1rem 0.3rem;
+    }
+    .song-list {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .song-card {
+        padding: 0.8rem 0.7rem;
+    }
+    .song-create-form,
+    .song-edit-form {
+        padding: 1rem 0.5rem;
+    }
+    .search-results-container {
+        padding: 1rem 0.3rem;
+    }
+    .search-album-list {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .reviews-container,
+    .review-create-container {
+        padding: 1rem 0.3rem;
+    }
+    .reviews-list {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .review-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between; /* Mantém distribuição adequada */
+    }
+
+    .header-actions {
+        order: 2;
+        gap: 1rem;
+        margin-left: 0; /* Remove margin-left em mobile */
+    }
+
+    .search-form input[type="search"] {
+        width: 120px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.2rem;
+    }
+    .footer-brand {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-top: 1.2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .home-hero {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        min-height: 120px;
+    }
+    .home-hero-content {
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 600px) {
+    .header-mobile-toggle {
+        display: block;
+    }
+
+    .header-container {
+        flex-wrap: nowrap;
+    }
+
+    .header-actions {
+        gap: 1rem;
+    }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--header-bg);
+        box-shadow: 0 4px 16px #0007;
+        border-radius: 0 0 12px 12px;
+        min-width: 200px;
+        z-index: 200;
+        padding: 0.5rem 0;
+    }
+
+    .main-nav.active {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+    }
+
+    .nav-list li {
+        width: 100%;
+    }
+
+    .nav-list a,
+    .nav-list span,
+    .logout-form button {
+        display: block;
+        width: 100%;
+        padding: 0.8rem 1.2rem;
+        text-align: left;
+        border-radius: 0;
+    }
+
+    .logout-form button {
+        background: transparent;
+        color: var(--text-light);
+        border: none;
+    }
+
+    .logout-form button:hover {
+        background: #4a5670;
+    }
+
+    .search-form {
+        order: 1;
+    }
+
+    .search-form input[type="search"] {
+        width: 100px;
+    }
+
     .auth-card {
         min-width: 90vw;
         max-width: 98vw;
