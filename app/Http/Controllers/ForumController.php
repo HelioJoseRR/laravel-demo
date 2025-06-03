@@ -85,7 +85,35 @@ class ForumController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // IMPLEMENTAÇÃO CORRETA AQUI!
+        $topic = ForumTopic::findOrFail($id);
+        
+        // Verifica se o usuário é o dono do tópico
+        abort_if($topic->user_id !== Auth::id(), 403, 'You can only delete your own topics.');
+        
+        // Deleta todos os posts relacionados ao tópico primeiro
+        ForumPost::where('topic_id', $id)->delete();
+        
+        // Deleta o tópico
+        $topic->delete();
+        
+        return redirect('/forum')->with('success', 'Topic deleted successfully!');
+    }
+
+    /**
+     * Delete a specific post.
+     */
+    public function destroyPost(string $id)
+    {
+        $post = ForumPost::findOrFail($id);
+        
+        // Verifica se o usuário é o dono do post
+        abort_if($post->user_id !== Auth::id(), 403, 'You can only delete your own posts.');
+        
+        $topicId = $post->topic_id;
+        $post->delete();
+        
+        return redirect("/forum/topic/{$topicId}")->with('success', 'Post deleted successfully!');
     }
 
     public function storePost(Request $request)
@@ -105,6 +133,7 @@ class ForumController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['storeTopic', 'storePost']);
+        // ADICIONEI 'destroy' e 'destroyPost' ao middleware
+        $this->middleware('auth')->only(['storeTopic', 'storePost', 'destroy', 'destroyPost']);
     }
 }

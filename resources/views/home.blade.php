@@ -21,7 +21,8 @@
           <article class="highlight-card">
             <div class="highlight-info">
               <h5 class="highlight-title"><a href="/playlists/view/{{ $playlist->id }}">{{ $playlist->name }}</a></h5>
-              <p class="highlight-author">by <a href="#">{{ $playlist->user->name }}</a></p>
+              <p class="highlight-author">by <a href="/profile/{{ $playlist->user->id }}">{{ $playlist->user->name }}</a></p>
+
             </div>
           </article>
         @endforeach
@@ -51,7 +52,7 @@
               <h5 class="forum-title">{{ $discussion->title }}</h5>
               <small class="forum-replies">{{ $discussion->posts_count }} replies</small>
             </div>
-            <p class="forum-author">Started by <i class="fas fa-user"></i> {{ $discussion->user->name }}</p>
+            <p class="forum-author">Started by <i class="fas fa-user"></i> <a href="/profile/{{$discussion->user->id}}">{{ $discussion->user->name }}</a></p>
           </a>
         @endforeach
       </div>

@@ -19,8 +19,10 @@
             </select>
             <small class="form-text">Hold Ctrl (Cmd) to select multiple songs.</small>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-        <a href="/playlists" class="btn btn-secondary" style="margin-left:0.7rem;">Cancel</a>
+        <div class="botoes-container">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a href="/playlists" class="btn btn-secondary">Cancel</a>
+        </div>
     </form>
 </div>
 @endsection

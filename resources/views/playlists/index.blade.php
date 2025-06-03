@@ -12,7 +12,7 @@
         @foreach ($playlists as $playlist)
         <li class="playlist-card">
             <a href="/playlists/view/{{ $playlist->id }}" class="playlist-title">{{ $playlist->name }}</a>
-            <small class="playlist-author">by {{ $playlist->username }}</small>
+            <small class="highlight-author">by <a href="/profile/{{ $playlist->user->id }}">{{ $playlist->user->name }}</a></small>
         </li>
         @endforeach
     </ul>

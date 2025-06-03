@@ -1,0 +1,10 @@
+          <li class="nav-item">
+            <a href="/profile/{{ Auth::id() }}" class="nav-link"> | {{ Auth::user()->name }}</a>
+          </li>
+
+          <li class="nav-item">
+            <form method="POST" action="/logout" class="logout-form">
+            @csrf
+            <button type="submit" class="logout-button">Logout</button>
+            </form>
+          </li>

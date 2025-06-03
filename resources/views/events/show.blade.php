@@ -9,12 +9,17 @@
     <hr>
     <p class="event-description">{{ $event->description }}</p>
     @endif
+    
     <div class="event-actions" style="margin-top:1.5rem;">
-        <a href="/events/edit/{{ $event->id }}" class="btn btn-secondary">Edit</a>
-        <form action="/events/delete/{{ $event->id }}" method="POST" style="display:inline;">
-            @csrf
-            <button class="btn btn-danger" onclick="return confirm('Delete this event?')">Delete</button>
-        </form>
+        @auth
+            @if($event->user_id === Auth::id())
+                <a href="/events/edit/{{ $event->id }}" class="btn btn-secondary">Edit</a>
+                <form action="/events/delete/{{ $event->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button class="btn btn-danger" onclick="return confirm('Delete this event?')">Delete</button>
+                </form>
+            @endif
+        @endauth
         <a href="/events" class="btn btn-secondary" style="margin-left:0.7rem;">Back to Events</a>
     </div>
 </div>

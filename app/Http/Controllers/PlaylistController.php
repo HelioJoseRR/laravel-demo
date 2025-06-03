@@ -19,7 +19,9 @@ class PlaylistController extends Controller
 
     public function index()
     {
-        $playlists = Playlist::where('user_id', Auth::id())->paginate(10);
+        $playlists = Playlist::with('user') // Adicione esta linha!
+                           ->where('user_id', Auth::id())
+                           ->paginate(10);
         return view('playlists.index', compact('playlists'));
     }
 
@@ -59,7 +61,7 @@ class PlaylistController extends Controller
     public function show(string $id)
     {
         $playlist = Playlist::with('songs')->findOrFail($id);
-        abort_if($playlist->user_id !== Auth::id(), 403);
+        //abort_if($playlist->user_id !== Auth::id(), 403);
         $availableSongs = Song::all();
         return view('playlists.show', compact('playlist', 'availableSongs'));
     }

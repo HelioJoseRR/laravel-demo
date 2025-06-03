@@ -40,32 +40,23 @@
           @auth
         <!-- User Menu -->
         <div class="user-menu">
-        <div class="user-info">
-          <span class="user-greeting">Welcome, {{ Auth::user()->name }}</span>
-        </div>
 
         <nav class="main-navigation" role="navigation">
           <ul class="nav-menu">
           <li class="nav-item">
-            <a href="/profile/{{ Auth::id() }}" class="nav-link">My profile</a>
+            <a href="/playlists" class="nav-link"> <i class="fa-solid fa-play"></i> Playlists</a>
           </li>
           <li class="nav-item">
-            <a href="/playlists" class="nav-link">Playlists</a>
+            <a href="/forum" class="nav-link"><i class="fa-solid fa-comment"></i> Forum</a>
           </li>
           <li class="nav-item">
-            <a href="/forum" class="nav-link">Forum</a>
+            <a href="/songs" class="nav-link"> <i class="fa-solid fa-headphones"></i> Songs</a>
           </li>
           <li class="nav-item">
-            <a href="/songs" class="nav-link">Songs</a>
+            <a href="/events" class="nav-link"><i class="fa-solid fa-users"></i> Events</a>
           </li>
-          <li class="nav-item">
-            <a href="/events" class="nav-link">Events</a>
-          </li>
-          <li class="nav-item">
-            <form method="POST" action="/logout" class="logout-form">
-            @csrf
-            <button type="submit" class="logout-button">Logout</button>
-            </form>
+                    <li class="nav-item">
+            <a href="/profile/{{ Auth::id() }}" class="nav-link"><i class="fa-solid fa-user"></i> {{ Auth::user()->name }}</a>
           </li>
           </ul>
         </nav>

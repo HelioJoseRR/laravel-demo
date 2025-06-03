@@ -28,7 +28,7 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Add to Playlist</button>
-            <a href="/playlists" class="btn btn-secondary" style="margin-left:0.7rem;">Back to Playlists</a>
+            <a href="/playlists" class="btn btn-secondary"">Back to Playlists</a>
         </form>
     </div>
 </div>

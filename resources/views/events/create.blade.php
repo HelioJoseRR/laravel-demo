@@ -17,8 +17,10 @@
       <label class="form-label">Event Date</label>
       <input type="date" name="event_date" class="form-control" required>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a href="/events" class="btn btn-secondary" style="margin-left:0.7rem;">Cancel</a>
+    <div>
+      <button type="submit" class="btn btn-primary">Create</button>
+      <a href="/events" class="btn btn-secondary" style="margin-left:0.7rem;">Cancel</a>
+    </div>  
   </form>
 </div>
 @endsection

@@ -23,6 +23,13 @@ Route::get('/login', [UserController::class, 'login']);
 Route::post('/login', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
 
+// ===== ROTAS DE AMIZADE =====
+Route::get('/amigos', [UserController::class, 'amigos'])->name('amigos.index');
+Route::post('/amigos/enviar-convite', [UserController::class, 'enviarConvite'])->name('amigos.enviar');
+Route::post('/amigos/aceitar/{id}', [UserController::class, 'aceitarConvite'])->name('amigos.aceitar');
+Route::post('/amigos/rejeitar/{id}', [UserController::class, 'rejeitarConvite'])->name('amigos.rejeitar');
+Route::delete('/amigos/remover/{id}', [UserController::class, 'removerAmizade'])->name('amigos.remover');
+
 // Albums routes
 Route::get('/albums', [AlbumController::class, 'index']);
 Route::get('/albums/view/{id}', [AlbumController::class, 'show']);
@@ -59,10 +66,13 @@ Route::post('/events/edit/{id}', [EventController::class, 'update']);
 Route::post('/events/delete/{id}', [EventController::class, 'delete']);
 
 // Forum routes
+// Rotas existentes do fórum
 Route::get('/forum', [ForumController::class, 'index']);
-Route::get('/forum/topic/{id}', [ForumController::class, 'show']);
 Route::post('/forum/topic', [ForumController::class, 'storeTopic']);
+Route::get('/forum/topic/{id}', [ForumController::class, 'show']);
 Route::post('/forum/post', [ForumController::class, 'storePost']);
+Route::delete('/forum/topic/{id}', [ForumController::class, 'destroy'])->name('forum.topic.destroy');
+Route::delete('/forum/post/{id}', [ForumController::class, 'destroyPost'])->name('forum.post.destroy');
 
 // Profile routes
 Route::get('/profile/{id}', [ProfileController::class, 'show']);
